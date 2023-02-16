@@ -1,0 +1,49 @@
+{
+  "base": {
+    "id": ["int", "key"],
+    "name": ["str", "UNIQUE"],
+    "role": ["int"]
+  },
+  "show": {
+    "form": [
+      {
+        "key": "id",
+        "validator": []
+      },
+      {
+        "key": "name",
+        "validator": []
+      }
+    ],
+    "column": [
+      {
+        "key": "id",
+        "type": "label",
+        "disabled": true
+      },
+      {
+        "key": "name",
+        "title": "权限名",
+        "type": "label",
+        "placeHolder": "请输入权限名"
+      },
+      {
+        "key": "role",
+        "title": "权限等级",
+        "type": "label",
+        "placeHolder": "请输入权限等级"
+      }
+    ],
+    "rowActions": ["edit", "delete"]
+  },
+  "defaultInsert": [
+    {
+      "name": "游客",
+      "role": 1
+    },
+    {
+      "name": "管理员",
+      "role": 0
+    }
+  ]
+}

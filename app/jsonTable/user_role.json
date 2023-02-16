@@ -1,0 +1,72 @@
+{
+  "base": {
+    "id": ["int", "key"],
+    "from_user": ["int"],
+    "from_role": ["int"]
+  },
+  "show": {
+    "form": [
+      {
+        "key": "id",
+        "validator": []
+      },
+      {
+        "title": "用户名",
+        "key": "user.username"
+      },
+      {
+        "title": "权限",
+        "key": "role.name",
+        "validator": []
+      }
+    ],
+    "column": [
+      {
+        "key": "id",
+        "type": "label",
+        "disabled": true
+      },
+      {
+        "key": "from_user",
+        "title": "用户",
+        "type": "formSelector",
+        "placeHolder": "请输入用户",
+        "fromKey": "user.username",
+        "formatKey": "usrname2",
+        "validator": [
+          { "validator": "unique", "trigger": "change" },
+          { "required": true, "trigger": "change" }
+        ],
+        "leftJoin": {
+          "user": ["user.id", "user_role.from_user", "="]
+        }
+      },
+      {
+        "key": "from_role",
+        "title": "权限",
+        "type": "formSelector",
+        "placeHolder": "请输入权限等级",
+        "formatKey": "type2",
+        "fromKey": "role.name",
+        "leftJoin": {
+          "role": ["role.id", "user_role.from_role", "="]
+        },
+        "validator": [
+          { "validator": "unique", "trigger": "change" },
+          { "required": true, "trigger": "change" }
+        ]
+      }
+    ],
+    "rowActions": ["edit", "delete"]
+  },
+  "defaultInsert": [
+    {
+      "from_user": 1,
+      "from_role": 2
+    },
+    {
+      "from_user": 2,
+      "from_role": 1
+    }
+  ]
+}

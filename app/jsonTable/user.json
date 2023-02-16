@@ -1,0 +1,148 @@
+{
+  "base": {
+    "id": ["int", "key"],
+    "username": ["str", "UNIQUE"],
+    "avatar": ["int"],
+    "password": ["str"],
+    "phone": ["str"],
+    "openID": ["str"],
+    "gender": ["int"],
+    "rank": ["int"],
+    "disabled": ["BOOLEAN", "DEFAULT false"],
+    "createDate": ["DATE"]
+  },
+  "show": {
+    "form": [
+      {
+        "key": "id",
+        "validator": []
+      },
+      {
+        "key": "username",
+        "validator": []
+      }
+    ],
+    "column": [
+      {
+        "key": "id",
+        "type": "label",
+        "disabled": true,
+        "isAuto": true
+      },
+      {
+        "key": "avatar",
+        "title": "头像",
+        "type": "image",
+        "fromKey": "images.url",
+        "formatKey": "avatar",
+        "placeholder": "请选择头像",
+        "validator": [{ "required": true, "trigger": "change" }],
+        "leftJoin": {
+          "images": ["user.avatar", "images.id", "="]
+        }
+      },
+      {
+        "key": "username",
+        "title": "用户名",
+        "type": "label",
+        "placeholder": "请输入用户名",
+        "validator": [
+          { "validator": "unique", "trigger": "change" },
+          { "required": true, "trigger": "change" }
+        ]
+      },
+
+      {
+        "title": "权限",
+        "type": "formSelector",
+        "fromKey": "role.name",
+        "formatKey": "type",
+        "leftJoin": {
+          "user_role": ["user_role.from_user", "user.id", "="],
+          "role": ["user_role.from_role", "role.id", "="]
+        },
+        "validator": [{ "required": true, "trigger": "change" }]
+      },
+      {
+        "key": "password",
+        "title": "密码",
+        "type": "label",
+        "placeholder": "请输入密码",
+        "hidden": true,
+        "validator": [{ "required": true, "trigger": "change" }],
+        "actions": {
+          "hashable": true
+        }
+      },
+      {
+        "key": "gender",
+        "title": "性别",
+        "type": "selector",
+        "placeholder": "请输入密码",
+        "hidden": true,
+        "validator": [{ "required": true, "trigger": "change" }],
+        "selector": [
+          {
+            "key": "男",
+            "value": 0
+          },
+          {
+            "key": "女",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "key": "rank",
+        "title": "积分",
+        "type": "label",
+        "placeholder": "请输入积分"
+      },
+      {
+        "key": "disabled",
+        "title": "是否启用",
+        "type": "selector",
+        "default": 0,
+        "validator": [{ "required": true, "trigger": "change" }],
+        "selector": [
+          {
+            "key": "启用",
+            "value": 0
+          },
+          {
+            "key": "禁止",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "title": "创建日期",
+        "key": "createDate",
+        "type": "date",
+        "validator": [{ "required": true, "trigger": "change" }]
+      }
+    ],
+    "rowActions": ["edit", "delete"]
+  },
+
+  "defaultInsert": [
+    {
+      "username": "admin",
+      "password": "$2b$12$rQFPHvGK7dgZCzfpXtdxyuQUAILrNT8F4Oh6cPu/46PDwrf4iXJZS",
+      "createDate": "2023-02-14T16:00:00.000Z",
+      "phone": "13282000251",
+      "gender": 0,
+      "openID": "",
+      "rank": 0
+    },
+    {
+      "username": "visitor",
+      "password": "$2b$12$rQFPHvGK7dgZCzfpXtdxyuQUAILrNT8F4Oh6cPu/46PDwrf4iXJZS",
+      "createDate": "2023-02-14T16:00:00.000Z",
+      "phone": "15958002937",
+      "gender": 1,
+      "openID": "",
+      "rank": 0
+    }
+  ]
+}

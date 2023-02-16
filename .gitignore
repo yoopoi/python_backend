@@ -1,0 +1,5 @@
+__pycache__
+admin/.github
+admin/node_modules
+app/__pycache__
+storage.db

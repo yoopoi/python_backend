@@ -1,0 +1,8 @@
+{
+  "host": "0.0.0.0",
+  "port": 8081,
+  "dburl": "sqlite://localhost/storage?prefix=xc",
+  "adminPath": "admin/dist",
+  "jsonTablePath": "app/jsonTable",
+  "uploadFilePath": "uploads"
+}

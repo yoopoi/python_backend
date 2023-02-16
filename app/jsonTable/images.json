@@ -1,0 +1,44 @@
+{
+  "base": {
+    "id": ["int", "key"],
+    "name": ["str"],
+    "url": ["str"]
+  },
+  "show": {
+    "form": [
+      {
+        "key": "id",
+        "validator": []
+      },
+      {
+        "key": "name",
+        "validator": []
+      },
+      {
+        "key": "url",
+        "validator": []
+      }
+    ],
+    "column": [
+      {
+        "key": "id",
+        "type": "label",
+        "disabled": true
+      },
+      {
+        "key": "name",
+        "title": "图片名",
+        "type": "label",
+        "placeHolder": "请输入图片名"
+      },
+      {
+        "key": "url",
+        "title": "图片",
+        "type": "image",
+        "placeHolder": "请上传图片"
+      }
+    ],
+    "rowActions": ["edit", "delete"]
+  },
+  "defaultInsert": []
+}
